@@ -91,6 +91,18 @@ redop<-function(nt,p1,p2){
   return(u)
 }
 
+redop_try<-function(nt,p1,p2){
+  if(p1<1|p1>nt) stop('input p1 error in reduce')
+  if(p2<1|p2>nt) stop('input p2 error in reduce')
+  M<-diag(1,nt)
+  M[,p1:p2]<-M[,p1:p2]-1/(p2-p1+1)
+  eM<-eigen(M)
+  if(abs(eM$values[nt])>1E-5) stop('ev error in reduce')
+  if(any(abs(eM$values[-nt])<1E-5)) stop('ev error2 in reduce')
+  u<-eM$vector[,-nt]
+  return(eM$values)
+}
+
 
 # given reduce dimension operator u and data vector x and space-temporal structure nt,ns
 # return reduced vector (nt-1)*ns ##nt:time, ns:number of spaces
