@@ -214,7 +214,7 @@ begin
 end
 
 ;-----------------------------
-; 主驱动（路径按你最新代码）
+; 主驱动
 ;-----------------------------
 begin
   dir_uv  = "/home/dongyl/Work2_2025/ERA5_daily/everyyear_levels_50-300_merged"
